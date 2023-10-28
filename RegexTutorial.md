@@ -1,10 +1,12 @@
 # Regular Expressions (Regex) Tutorial
 
-Introductory paragraph (replace this with your text)
+Regular expressions, generally referred to as Regex, are incredibly powerful and useful patterning matching strings. They are encoded text strings that can match patterns in other strings. These expressions may be relatively simple such as when they are used to match exact strings, or they can be quite complex where the strings that are matched contain a set rules. Regex are supported by nearly all programming languages. They allow for cleaner, more effecient code, and relatively faster validations in code, by replacing many of the if/else statements in code since the validation will only need to be done once with regex. It is important to understand that when using a regular expression, it will only validate the structure of a particular string. For example, there would be no way of using regex to validate whether someone was using a legitimate or actual email address, only whether the provided email was structured properly as an email address. But, even with this particular drawback, regular expressions provide many benefits over other validation methods.
 
 ## Summary
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
+This tutorial will be matching an email string as an example of a regular expression. The following will be the example regex email string:<br>
+
+<code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>
 
 ## Table of Contents
 
