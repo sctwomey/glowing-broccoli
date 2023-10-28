@@ -33,17 +33,16 @@ The caret <code>^</code> and the dollar sign <code>$</code> are characters that 
 
 Quantifiers in regular expressions are metacharacters that are used to enumerate how many times the previous character or character group should be matched. This allows for pattern matching characters or character groups of varying lengths. Since quantifiers attempt to match as many characters or character groups as possible, they are referred to as being "greedy". They include the following:
 
-    - <code>?</code>: Pattern match zero or one times.
-    - <code>*</code>: Pattern match zero or more times.
-    - <code>+</code>: Pattern match one or more times.
-    - <code>{}</code>: Curly brackets set limits for a match in the following ways:
-        - <code>{ n }</code>: Exact pattern match <code>n</code> number of times (where n is a number).
-        - <code>{ n, }</code>: Pattern match at least <code>n</code> or more number of times (where n is a number).
-        - <code>{ n,m }</code>: Pattern match from a minimum of <code>n</code> number of times to a maximum of <code>m</code> number of times (where n and m are both numbers and n < m).
+- <code>?</code>: Pattern match zero or one times.
+- <code>*</code>: Pattern match zero or more times.
+- <code>+</code>: Pattern match one or more times.
+- <code>{}</code>: Curly brackets set limits for a match in the following ways:
+    - <code>{ n }</code>: Exact pattern match <code>n</code> number of times (where n is a number).
+    - <code>{ n, }</code>: Pattern match at least <code>n</code> or more number of times (where n is a number).
+    - <code>{ n,m }</code>: Pattern match from a minimum of <code>n</code> number of times to a maximum of <code>m</code> number of times (where n and m are both numbers and n < m).
 
-In the email example listed in the Summary, the quantifiers being used is the <code>+</code> character and the limiter <code>{ n,m }</code>. The <code>+</code> is used twice - here <code>([a-z0-9_\.-]**+**)</code> and here <code>([\da-z\.-]**+**)</code>. Where as the limiter is used here <code>([a-z\.]**{2,6}**)</code>.
+In the email example listed in the Summary, the quantifiers being used are the <code>+</code> character and the limiter <code>{ n,m }</code>. The <code>+</code> is used twice - here <code>([a-z0-9_\.-]**+**)</code> and here <code>([\da-z\.-]**+**)</code>. Where as the limiter is used here <code>([a-z\.]**{2,6}**)</code>.
     
-
 ### OR Operator
 
 ### Character Classes
