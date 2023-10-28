@@ -27,7 +27,7 @@ This tutorial will be matching an email string as an example of a regular expres
 
 ### Anchors
 
-The caret <code>^</code> and the dollar sign <code>$</code> characters are called anchors in a regular expression. The caret <code>^</code> is used to indicate the beginning of a string, and the dollar <code>$</code> is used to indicate the end of a string. In the email example above the beginning of the example email regex is displayed in this snippet <code>^([a-z0-9_\.-]+)</code>. The end of the example email regex is displayed in this snippet <code>([a-z\.]{2,6})$</code>.
+The caret <code>^</code> and the dollar sign <code>$</code> are characters that are called anchors in a regular expression. The caret <code>^</code> indicates the beginning of a string, and the dollar <code>$</code> indicates the end of a string. In the email example above the beginning of the example email regex is displayed in this snippet <code>^([a-z0-9_\.-]+)</code> - the snippet begins with a <code>^</code> character. The end of the example email regex is displayed in this snippet <code>([a-z\.]{2,6})$</code> - the snippet ends with a <code>$</code> character.
 
 ### Quantifiers
 
