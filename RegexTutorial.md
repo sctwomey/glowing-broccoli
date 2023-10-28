@@ -8,6 +8,7 @@ This tutorial will be matching an email string as an example of a regular expres
 
 <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>
 
+
 ## Table of Contents
 
 - [Anchors](#anchors)
