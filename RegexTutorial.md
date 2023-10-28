@@ -41,7 +41,7 @@ Quantifiers in regular expressions are metacharacters that are used to enumerate
     - <code>{ n, }</code>: Pattern match at least <code>n</code> or more number of times (where n is a number).
     - <code>{ n,m }</code>: Pattern match from a minimum of <code>n</code> number of times to a maximum of <code>m</code> number of times (where n and m are both numbers and n < m).
 
-In the email example listed in the Summary, the quantifiers being used are the <code>+</code> character and the limiter <code>{ n,m }</code>. The <code>+</code> is used twice - here <code>([a-z0-9_\.-]**+**)</code> and here <code>([\da-z\.-]**+**)</code>. Where as the limiter is used here <code>([a-z\.]**{2,6}**)</code>.
+In the email example listed in the Summary, the quantifiers being used are the <code>+</code> character and the curly brackets limit setter <code>{ n,m }</code>. The <code>+</code> is used twice - here <code>([a-z0-9_\.-]**+**)</code> and here <code>([\da-z\.-]**+**)</code>. Where as the limit setter is used here <code>([a-z\.]**{2,6}**)</code>.
     
 ### OR Operator
 
