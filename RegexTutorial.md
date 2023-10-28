@@ -1,6 +1,6 @@
 # Regular Expressions (Regex) Tutorial
 
-Regular expressions, generally referred to as Regex, are incredibly powerful and useful patterning matching strings. They are encoded text strings that can match patterns in other strings. These expressions may be relatively simple such as when they are used to match exact strings, or they can be quite complex where the strings that are matched contain a set rules. Regex are supported by nearly all programming languages. They allow for cleaner, more effecient code, and relatively faster validations in code, by replacing many of the if/else statements in code since the validation will only need to be done once with regex. It is important to understand that when using a regular expression, it will only validate the structure of a particular string. For example, there would be no way of using regex to validate whether someone was using a legitimate or actual email address, only whether the provided email was structured properly as an email address. But, even with this particular drawback, regular expressions provide many benefits over other validation methods.
+Regular expressions, generally referred to as Regex, are incredibly powerful and useful patterning matching strings, or sequence of characters. They are encoded text strings that can match patterns in other strings. These expressions may be relatively simple such as when they are used to match exact strings, or they can be quite complex where the strings that are matched contain a set rules. Regex are supported by nearly all programming languages. They allow for cleaner, more effecient code, and relatively faster validations in code, by replacing many of the if/else statements in code since the validation will only need to be done once with regex. It is important to understand that when using a regular expression, it will only validate the structure of a particular string. For example, there would be no way of using regex to validate whether someone was using a legitimate or actual email address, only whether the provided email was structured properly as an email address. But, even with this particular drawback, regular expressions provide many benefits over other validation methods.
 
 ## Summary
 
@@ -26,6 +26,8 @@ This tutorial will be matching an email string as an example of a regular expres
 ## Regex Components
 
 ### Anchors
+
+The caret <code>^</code> and the dollar sign <code>$</code> characters are called anchors in a regular expression. The caret <code>^</code> is used to indicate the beginning of a string, and the dollar <code>$</code> is used to indicate the end of a string. In the email example above the beginning of the example email regex is displayed in this snippet <code>^([a-z0-9_\.-]+)</code>. The end of the example email regex is displayed in this snippet <code>([a-z\.]{2,6})$</code>.
 
 ### Quantifiers
 
