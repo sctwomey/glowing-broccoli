@@ -4,7 +4,7 @@ Regular expressions, generally referred to as Regex, are incredibly powerful and
 
 ## Summary
 
-This tutorial will be matching an email string as an example of a regular expression. The following will be the example regex email string:<br>
+This tutorial will be using an email string sequence as an example of a regular expression. The following will be the example regex email string sequence:<br>
 
 <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>
 
@@ -27,11 +27,11 @@ This tutorial will be matching an email string as an example of a regular expres
 
 ### Anchors
 
-The caret <code>^</code> and the dollar sign <code>$</code> are characters that are called anchors in a regular expression. The caret <code>^</code> indicates the beginning of a string, and the dollar <code>$</code> indicates the end of a string. In the email example listed in the Summary, the beginning of the example email regex is displayed in this snippet <code>^([a-z0-9_\.-]+)</code> - the snippet begins with a <code>^</code> character. The end of the example email regex is displayed in this snippet <code>([a-z\.]{2,6})$</code> - the snippet ends with a <code>$</code> character.
+The caret <code>^</code> and the dollar sign <code>$</code> are characters that are called anchors in a regular expression. The caret <code>^</code> indicates the beginning of a string sequence, and the dollar <code>$</code> indicates the end of a string sequence. In the email example listed in the Summary, the beginning of the example email regex is displayed in this snippet <code>^([a-z0-9_\.-]+)</code> - the snippet begins with a <code>^</code> character. The end of the example email regex is displayed in this snippet <code>([a-z\.]{2,6})$</code> - the snippet ends with a <code>$</code> character.
 
 ### Quantifiers
 
-Quantifiers in regular expressions are metacharacters that are used to enumerate how many times the previous character or character group should be matched. This allows for pattern matching characters or character groups of varying lengths. Since quantifiers attempt to match as many characters or character groups as possible, they are referred to as being "greedy". They include the following:
+Quantifiers in regular expressions are metacharacters that are used to enumerate how many times the previous character or character group should be matched. This allows for pattern matching characters or character groups of varying lengths. Usually, quantifiers attempt to match as many characters or character groups as possible. When quatifiers attempt this action they are referred to as being "greedy", and include the following:
 
 - <code>?</code>: Pattern match zero or one times.
 - <code>*</code>: Pattern match zero or more times.
@@ -42,10 +42,14 @@ Quantifiers in regular expressions are metacharacters that are used to enumerate
     - <code>{ n,m }</code>: Pattern match from a minimum of <code>n</code> number of times to a maximum of <code>m</code> number of times (where n and m are both numbers and n < m).
 
 In the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>, the quantifiers being used are the <code>+</code> character and the curly brackets limit setter <code>{ n,m }</code>. The <code>+</code> is used twice - here <code>([a-z0-9_\.-]**+**)</code> and here <code>([\da-z\.-]**+**)</code>. Where as the limit setter is used here <code>([a-z\.]**{2,6}**)</code>.
+
+A discussion of 'lazy' quantifiers may be found in the 'Greedy and Lazy Match' section of this tutorial.
     
 ### OR Operator
 
+In regular expressions, using the OR operator <code>|</code>, also called a pipe symbol or vertical bar, allows for matching everything either to the left **'OR'** to the right of the pipe symbol. This is used to match a single regex out of many potential regular expressions. If the pattern matching is to be limited to a certain string sequence in a single regex, then parentheses around a string sequence will group together that particular sequence for matching.
 
+For the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>, there was no OR operator <code>|</code> used.
 
 ### Character Classes
 
@@ -89,16 +93,66 @@ For the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</c
 
 ### Grouping and Capturing
 
+In regular expressions, there is a very useful feature for simplifying any complex pattern for matching. This is called **'Grouping'**, where a repeated sequence of characters, such as in the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>, are grouped or captured. Any regex subpattern may be considered a group when enclosed within parentheses <code>()</code>. For example, <code>(abc)</code> is considered a group that matches the string sequence 'abc'. For the email example in this tutorial, the following are groups:
+
+- <code>([a-z0-9_\.-]+)</code>: this matches any character that is a lowercase letter, a digit, and one of any underscore <code>_</code>, period <code>.</code>, or dash <code>-</code> with a quantifier.
+
+- <code>([\da-z\.-]+)</code>: this matches any character that is any Arabic digit, lowercase letter, and one of any period <code>.</code> or dash <code>-</code> with a quantifier.
+
+- <code>([a-z\.]{2,6})</code>: this matches any character that is any lowercase letter, and one of any period <code>.</code> with a quantifier.
+
+A more detailed explanation of each group may be found in the 'Character Classes' section.
+
 ### Bracket Expressions
+
+In regular expressions, a bracket expression is a sequence of characters that are encloded by square brackets <code>[]</code>. Bracket expressions may contain any combination of characters that matches any single character within a string sequence. For example, the regex <code>[123]</code> with match any single digit enclosed within the brackets, whereas <code>[^123]</code> will match any single character that is not a 1, 2, or 3 due to the caret character <code>^</code> within the brackets - this was discussed previously in the 'Character Classes' section of this tutorial. There may also be what are termed range expressions enclosed within a bracket expression. The range expression is two characters that are separated by a hyphen '-'. This will match any single character between the two characters separated by the hyphen. For example, <code>[a-d]</code> will match all lowercase letters between 'a' and 'd'.
+
+The bracket expressions in the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code> are as follows:
+
+- <code>[a-z0-9_\.-]</code>
+- <code>[\da-z\.-]</code>
+- <code>[a-z\.]</code>
+
+A more detailed explanation of each bracket expression may be found in the 'Character Classes' section.
 
 ### Greedy and Lazy Match
 
+In regular expressions, 'greedy' and 'lazy' generally refer to quantifiers. As discussed previously in this tutorial in the 'Quantifiers' section, as a general rule, quantifiers will attempt to match as many characters or character groups as possible. Due to this, they are referred to as being "greedy". However, there are quantifiers that may be used to match patterns as few times as possible, before attempting to match longer ones by expansion. In general, lazy pattern matching will lead to the shortest possible string being matched. When a lazy pattern match is to be accomplished, append a question mark <code>?</code> to an exitsting quantifier. 
+
+Some common lazy quantiifers include:
+
+- <code>??</code>: Pattern match the preceding character or subexpression zero or one times (zero is preferred).
+- <code>*?</code>: Pattern match the preceding character or subexpression zero or more times (as few as possible).
+- <code>+?</code>: Pattern match the preceding character or subexpression one or more times (as few as possible).
+- <code>{n}?</code>: Exact pattern match <code>n</code> number of times (where n is a number). This is the same as the greedy quantifier.
+
+For the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>, there are no lazy quantifiers being used. A more detailed explanation of greedy quantifiers may be found in the 'Quantifiers' section.
+
 ### Boundaries
+
+In regular expressions, boundaries are assertions that indicate the beginning and the end of lines or words. They may also be patterns that indicate a match is possible, such as 'look-ahead' or 'look-behind' assertions (the 'look-ahead' or 'look-behind' assertions will be discussed in the 'Look-ahead and Look-behind' section of this tutorial). For the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>, the following are boundaries:
+
+- <code>^</code>: this indicates the beginning of the string sequence - also called an anchor.
+- <code>$</code>: this indicates the end of the string sequence - also called an anchor.
 
 ### Back-references
 
+In regular expressions, a back-reference is a regex command that refers back to a previous part of a matched regex pattern. A back-reference is indicated by a backslash and a single digit, such as <code>\3</code>. In a regex pattern, back-references match the same content as a previously matched subexpression, which is the part of a regex that a back-reference refers to, specified by parentheses.
+
+For the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>, there are no back-references being used.
+
 ### Look-ahead and Look-behind
+
+In regular expressions, a look-ahead and a look-behind are assertions that together are called a look-around, which may be performed in a positive or negative way. 
+
+The positve look-around is typically used when a check is needed to determine whether a given pattern is proceeded or followed by another pattern. If the string sequence is to be traversed from the beginning, then a look-ahead is used. If the string sequence is to be traversed from the end, then a look-behind is used. A positive look-ahead is indicated by a <code>?=</code>. A positive look-behind is indicated by a <code>?<=</code>.
+
+The negative look-around is typically used when a check is needed to determine whether a given pattern is not proceeded or followed by another pattern. If the string sequence is to be traversed from the beginning, then a look-ahead is used. If the string sequence is to be traversed from the end, then a look-behind is used. A negative look-ahead is indicated by a <code>?!pattern</code>. A negative look-behind is indicated by a <code>?<!pattern</code>.
+
+For the email example <code>/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/</code>, there are no look-arounds being used.
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+Stephen Twomey<br><br>
+If there are questions or comments about this tutorial,<br>
+please visit: https://github.com/sctwomey.
